@@ -1,5 +1,5 @@
 import { ThemeProvider } from '../context/ThemeContext';
-import '../styles/globals.css'; // Adjust this path if your global CSS lives in a different folder
+import './globals.css';
 
 export const metadata = {
   title: 'HimShakti AI Generator',
