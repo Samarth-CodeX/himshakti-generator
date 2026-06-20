@@ -1,115 +1,147 @@
-'use client'; 
+'use client';
 
-import { useState, useEffect } from 'react';
-import Hero from "@/components/Hero";
-import Card from "@/components/Card";
-
-const CATALOG_ITEMS = [
-  { id: 1, title: "Organic Apple Chutney", category: "Pickles & Preserves", shelfLife: "6 Months" },
-  { id: 2, title: "Pure Rhododendron Juice", category: "Juices & Beverages", shelfLife: "4 Months" },
-  { id: 3, title: "Himalayan Herbal Tea", category: "Infusions & Teas", shelfLife: "1 Year" },
-];
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useTheme } from '../context/ThemeContext'; // Adjust path if context folder is at a different tier
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return localStorage.getItem('theme') === 'dark';
-  });
+  const { theme, toggleTheme } = useTheme();
+  
+  // Local safety backup fallback to bypass initialization freeze
+  const [localMounted, setLocalMounted] = useState(false);
 
-  // Sync theme with document element whenever the state changes
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  // Handle manual theme switching
-  const toggleTheme = () => {
-    setDarkMode((prevMode) => {
-      const nextMode = !prevMode;
-      localStorage.setItem('theme', nextMode ? 'dark' : 'light');
-      return nextMode;
-    });
-  };
-
-  const filteredItems = CATALOG_ITEMS.filter(item => 
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+    setLocalMounted(true);
+  }, []);
 
   return (
-    <div className="space-y-10 pb-8 min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <main className="min-h-screen flex flex-col justify-between bg-[#FAF9F6] text-slate-800 dark:bg-[#0B0F19] dark:text-slate-200 transition-colors duration-500 ease-in-out overflow-x-hidden">
       
-      {/* Self-contained Floating Dark Mode Toggle Button */}
-      <button 
-        onClick={toggleTheme}
-        className="fixed top-4 right-4 z-50 px-3 py-1.5 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm rounded-full shadow-md font-medium transition-colors"
-      >
-        {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-      </button>
-
-      <Hero />
-      
-      <div className="max-w-4xl mx-auto px-4 space-y-8">
-        {/* Search Panel using direct Tailwind inputs */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider">
-            Vendor Search & Control Station
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Filter Inventory Catalog</label>
-              <input 
-                type="text"
-                placeholder="Search products..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-3 py-2 border rounded-md bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              />
+      {/* 🧭 Top Navigation Bar */}
+      <div className="w-full border-b border-slate-200/60 dark:border-slate-800/50 bg-white/50 dark:bg-[#0B0F19]/50 backdrop-blur-md sticky top-0 z-40">
+        <header className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          
+          {/* Logo Frame */}
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-lg bg-emerald-700 dark:bg-emerald-600 flex items-center justify-center text-white font-serif font-bold text-lg shadow-sm">
+              ⛰️
             </div>
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition-colors"
-            >
-              Launch Support Desk
-            </button>
+            <div>
+              <span className="font-serif text-xl font-bold tracking-tight text-slate-950 dark:text-white block">
+                HimShakti
+              </span>
+              <span className="text-[10px] uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-semibold block -mt-0.5">
+                Food Processing Unit
+              </span>
+            </div>
           </div>
+
+          {/* Symmetrical Theme Toggle Switch Trigger */}
+          <div>
+            {localMounted ? (
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="px-4 py-2 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm transition-all duration-200 active:scale-95"
+              >
+                {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+              </button>
+            ) : (
+              <div className="px-4 py-2 text-xs text-slate-400 animate-pulse">Initializing...</div>
+            )}
+          </div>
+
+        </header>
+      </div>
+
+      {/* 🎯 Aligned Content Body Arena */}
+      <div className="w-full max-w-6xl mx-auto px-6 py-16 md:py-24 flex-grow flex flex-col justify-center">
+        
+        {/* Core Header Segment */}
+        <div className="space-y-4 mb-16 text-left max-w-2xl">
+          <span className="inline-flex items-center px-3 py-1 text-xs font-semibold tracking-wider text-emerald-800 bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-950/40 rounded-full uppercase">
+            Internal Administration Hub
+          </span>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-tight text-slate-950 dark:text-white leading-tight">
+            AI-Powered Product <br />
+            <span className="text-emerald-700 dark:text-emerald-400 bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent dark:from-emerald-400 dark:to-teal-300">Description Generator</span>
+          </h1>
+          <p className="text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+            Optimize and streamline high-quality digital catalog transformations for premium regional crop and food inventory management.
+          </p>
         </div>
 
-        {/* Catalog Grid */}
-        <div>
-          <div className="border-b border-slate-200 dark:border-slate-800 pb-3 mb-6">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Featured Processing Unit Catalog</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {filteredItems.map(item => (
-              <Card key={item.id} title={item.title} category={item.category} shelfLife={item.shelfLife} />
-            ))}
-          </div>
+        {/* 📋 Symmetrical Portal Navigation Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+          
+          {/* Card 1: Dashboard */}
+          <Link href="/dashboard" className="group rounded-xl border border-slate-200 bg-white dark:bg-[#111827] dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[180px]">
+            <div>
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-lg h-10 w-10 flex items-center justify-center text-lg mb-4 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/30 transition-colors">
+                📊
+              </div>
+              <h3 className="font-serif text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                Inventory Dashboard
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                Review verified item profiles, ingredients, and configure active distribution batches.
+              </p>
+            </div>
+            <div className="text-xs font-bold text-emerald-700 dark:text-emerald-400 pt-4 flex items-center gap-1">
+              Open Workspace <span>→</span>
+            </div>
+          </Link>
+
+          {/* Card 2: Login Access Portal */}
+          <Link href="/login" className="group rounded-xl border border-slate-200 bg-white dark:bg-[#111827] dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[180px]">
+            <div>
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-lg h-10 w-10 flex items-center justify-center text-lg mb-4 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/30 transition-colors">
+                🔑
+              </div>
+              <h3 className="font-serif text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                Vendor Access Gate
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                Secure portal authentication checkpoint for localized crop processing managers.
+              </p>
+            </div>
+            <div className="text-xs font-bold text-emerald-700 dark:text-emerald-400 pt-4 flex items-center gap-1">
+              Authenticate Portal <span>→</span>
+            </div>
+          </Link>
+
+          {/* Card 3: About Description */}
+          <Link href="/about" className="group rounded-xl border border-slate-200 bg-white dark:bg-[#111827] dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[180px]">
+            <div>
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-lg h-10 w-10 flex items-center justify-center text-lg mb-4 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/30 transition-colors">
+                ⛰️
+              </div>
+              <h3 className="font-serif text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                Our Mission Statement
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                Explore our regional goals for upscaling value chains across organic Himalayan crops.
+              </p>
+            </div>
+            <div className="text-xs font-bold text-emerald-700 dark:text-emerald-400 pt-4 flex items-center gap-1">
+              Read Profile <span>→</span>
+            </div>
+          </Link>
+
         </div>
       </div>
 
-      {/* Pure HTML/CSS Modal Box */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white dark:bg-slate-800 rounded-lg max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700">
-            <h3 className="text-lg font-semibold mb-2">Operational Support Desk</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">Your layout preview station is loading directly without component dependencies.</p>
-            <div className="flex justify-end">
-              <button 
-                onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 border border-slate-300 dark:border-slate-600 rounded text-sm hover:bg-slate-50 dark:hover:bg-slate-700"
-              >
-                Close
-              </button>
-            </div>
+      {/* 📝 Balanced Administrative Footer */}
+      <div className="w-full border-t border-slate-200/60 dark:border-slate-800/50 bg-white/20 dark:bg-[#0B0F19]/20">
+        <footer className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 dark:text-slate-500 tracking-wide gap-2">
+          <p>© 2026 HimShakti Unit. Confidential internal vendor network terminal context.</p>
+          <div className="flex gap-4">
+            <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">Security Protocol</span>
+            <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">LMS Integration API</span>
           </div>
-        </div>
-      )}
-    </div>
+        </footer>
+      </div>
+
+    </main>
   );
 }

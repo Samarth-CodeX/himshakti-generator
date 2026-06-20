@@ -6,17 +6,19 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
+  const [mounted, setMounted] = useState(false);
 
-  // Load configuration preference from localStorage on init
   useEffect(() => {
-    const savedTheme = localStorage.getItem('himshakti-theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
+    const savedTheme = localStorage.getItem('himshakti-theme') || 'light';
+    setTheme(savedTheme);
+    
+    // Explicitly add or remove the active class token on page mount
+    if (savedTheme === 'dark') {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
@@ -24,21 +26,21 @@ export const ThemeProvider = ({ children }) => {
     setTheme(nextTheme);
     localStorage.setItem('himshakti-theme', nextTheme);
     
-    // Toggle the .dark class on the <html> element for Tailwind's dark: variant
-    document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+    // Force toggle the class on click actions
+    if (nextTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be wrapped cleanly inside a ThemeProvider');
-  }
-  return context;
+  return useContext(ThemeContext);
 };

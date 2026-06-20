@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +26,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+/* Tells the entire screen to respect the dark token class layout fluidly */
+.dark body {
+  background-color: #0B0F19 !important;
+  color: #f8fafc !important;
 }
