@@ -1,0 +1,403 @@
+{
+  "info": {
+    "_postman_id": "8fa8ef61-bf92-4f23-b1d5-bc752a912bb3",
+    "name": "HimShakti_Week4_API",
+    "description": "Week 4 API collection for HimShakti Product Description Generator backend endpoints with saved example responses.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List All Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/tasks",
+          "protocol": "http",
+          "host": [
+            "127",
+            "1",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success List Fetch",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "1",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Organic Apple Chutney\",\n    \"category\": \"Pickle\",\n    \"ingredients\": \"Himalayan apples, chili, mustard oil\",\n    \"shelf_life\": \"6 Months\",\n    \"packaging_size\": \"200g\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Rhododendron Herbal Tea\",\n    \"category\": \"Herbal Tea\",\n    \"ingredients\": \"Dried rhododendron petals, lemongrass, mint\",\n    \"shelf_life\": \"1 Year\",\n    \"packaging_size\": \"100g\"\n  }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Search Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/tasks/search?q=Tea",
+          "protocol": "http",
+          "host": [
+            "127",
+            "1",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "Tea"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Search Filtering",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/tasks/search?q=Tea",
+              "protocol": "http",
+              "host": [
+                "127",
+                "1",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Tea"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n  {\n    \"id\": 2,\n    \"name\": \"Rhododendron Herbal Tea\",\n    \"category\": \"Herbal Tea\",\n    \"ingredients\": \"Dried rhododendron petals, lemongrass, mint\",\n    \"shelf_life\": \"1 Year\",\n    \"packaging_size\": \"100g\"\n  }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get Single Product Details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/tasks/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "1",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Item Fetch",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/tasks/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "1",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"id\": 1,\n  \"name\": \"Organic Apple Chutney\",\n  \"category\": \"Pickle\",\n  \"ingredients\": \"Himalayan apples, chili, mustard oil\",\n  \"shelf_life\": \"6 Months\",\n  \"packaging_size\": \"200g\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create a New Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Wild Himalayan Honey\",\n  \"category\": \"Juice\",\n  \"ingredients\": \"Pure forest honey, ginger extracts\",\n  \"shelf_life\": \"1 Year\",\n  \"packaging_size\": \"500g\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/tasks",
+          "protocol": "http",
+          "host": [
+            "127",
+            "1",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Product Creation",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Wild Himalayan Honey\", \"category\": \"Juice\", \"ingredients\": \"Pure forest honey, ginger extracts\", \"shelf_life\": \"1 Year\", \"packaging_size\": \"500g\"}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "1",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"id\": 3,\n  \"name\": \"Wild Himalayan Honey\",\n  \"category\": \"Juice\",\n  \"ingredients\": \"Pure forest honey, ginger extracts\",\n  \"shelf_life\": \"1 Year\",\n  \"packaging_size\": \"500g\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Product Technical Specifications",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Organic Apple Chutney (Premium Spiced)\",\n  \"category\": \"Pickle\",\n  \"ingredients\": \"Himalayan apples, chili, mustard oil, premium spices\",\n  \"shelf_life\": \"8 Months\",\n  \"packaging_size\": \"200g\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/tasks/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "1",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Product Specification Update",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Organic Apple Chutney (Premium Spiced)\", \"category\": \"Pickle\", \"ingredients\": \"Himalayan apples, chili, mustard oil, premium spices\", \"shelf_life\": \"8 Months\", \"packaging_size\": \"200g\"}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/tasks/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "1",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"id\": 1,\n  \"name\": \"Organic Apple Chutney (Premium Spiced)\",\n  \"category\": \"Pickle\",\n  \"ingredients\": \"Himalayan apples, chili, mustard oil, premium spices\",\n  \"shelf_life\": \"8 Months\",\n  \"packaging_size\": \"200g\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Remove a Product Listing",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/tasks/2",
+          "protocol": "http",
+          "host": [
+            "127",
+            "1",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks",
+            "2"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Product Deletion",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/tasks/2",
+              "protocol": "http",
+              "host": [
+                "127",
+                "1",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "2"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": "plain",
+          "header": [],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    }
+  ]
+}

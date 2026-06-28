@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HimShakti Generator - Lo-Fi Wireframes</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc; /* slate-50 */
+      color: #334155; /* slate-700 */
+    }
+
+    /* Print styling to split each wireframe on a separate page */
+    @media print {
+      body {
+        background-color: #ffffff;
+      }
+      .page-break {
+        page-break-after: always;
+        break-after: page;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        max-width: 100% !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* Simulate SVG/Drawing patterns in lo-fi wireframes */
+    .wireframe-pattern {
+      background-color: #f8fafc; /* slate-50 */
+      background-image: 
+        linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+        linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+
+    /* Wireframe placeholder boxes */
+    .placeholder-box {
+      background-color: #e2e8f0;
+      border: 2px dashed #94a3b8;
+      position: relative;
+    }
+    
+    .placeholder-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top right, transparent calc(50% - 1px), #cbd5e1 calc(50% - 1px), #cbd5e1 calc(50% + 1px), transparent calc(50% + 1px)),
+                  linear-gradient(to bottom right, transparent calc(50% - 1px), #cbd5e1 calc(50% - 1px), #cbd5e1 calc(50% + 1px), transparent calc(50% + 1px));
+      pointer-events: none;
+    }
+
+    /* Clean browser frame controls */
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #cbd5e1;
+    }
+  </style>
+</head>
+<body class="py-10 px-4 flex flex-col items-center gap-16">
+
+  <!-- TOP FLOATING ACTIONS (No Print) -->
+  <div class="no-print w-full max-w-6xl flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+    <div>
+      <h1 class="text-lg font-bold text-slate-800">HimShakti AI - Lo-Fi Wireframe Workspace</h1>
+      <p class="text-xs text-slate-500">6 Core screens mapped and aligned for export.</p>
+    </div>
+    <button onclick="window.print()" class="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-medium text-sm rounded-lg shadow transition">
+      🖨️ Print / Save to PDF
+    </button>
+  </div>
+
+  <!-- SCREEN 1: HOME PAGE -->
+  <div class="page-break w-full max-w-6xl bg-white border border-slate-300 rounded-2xl shadow-md overflow-hidden flex flex-col" style="aspect-ratio: 16/9;">
+    <!-- Browser Mockup Header -->
+    <div class="bg-slate-100 border-b border-slate-300 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+      </div>
+      <div class="bg-white border border-slate-300 text-center text-xs text-slate-400 py-1 px-12 rounded-lg w-1/2 select-none">
+        http://himshakti-generator.internal/home
+      </div>
+      <div class="text-xs text-slate-500 font-medium">SCREEN 1: HOME</div>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="flex-grow flex flex-col bg-slate-50">
+      <!-- Navbar Wireframe -->
+      <nav class="border-b border-slate-300 bg-white px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 placeholder-box rounded"></div>
+          <span class="font-bold text-sm tracking-tight text-slate-700">[Logo: HimShakti]</span>
+        </div>
+        <div class="flex items-center gap-6 text-xs text-slate-500 font-medium">
+          <span>[Dashboard Link]</span>
+          <span>[Mission Link]</span>
+          <span>[System Status]</span>
+          <div class="w-16 h-7 bg-slate-200 border border-slate-300 rounded flex items-center justify-center text-[10px] text-slate-600 font-bold">[Theme]</div>
+          <div class="w-20 h-7 bg-emerald-700 text-white rounded flex items-center justify-center text-[10px] font-bold">[Login Gateway]</div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="flex-grow grid grid-cols-12 px-12 py-10 gap-8 items-center">
+        <div class="col-span-7 space-y-6">
+          <div class="w-48 h-5 bg-slate-200 rounded"></div>
+          <div class="space-y-2">
+            <div class="w-full h-8 bg-slate-300 rounded"></div>
+            <div class="w-4/5 h-8 bg-slate-300 rounded"></div>
+          </div>
+          <div class="space-y-2">
+            <div class="w-full h-4 bg-slate-200 rounded"></div>
+            <div class="w-5/6 h-4 bg-slate-200 rounded"></div>
+          </div>
+          <div class="flex gap-4 pt-2">
+            <div class="w-32 h-10 bg-emerald-700 text-white rounded flex items-center justify-center text-xs font-bold">[Dashboard Workspace]</div>
+            <div class="w-32 h-10 bg-white border border-slate-300 text-slate-700 rounded flex items-center justify-center text-xs font-bold">[System Manual]</div>
+          </div>
+        </div>
+        
+        <!-- Right Image Representation -->
+        <div class="col-span-5 h-full flex flex-col justify-center">
+          <div class="w-full h-64 placeholder-box rounded-xl"></div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="border-t border-slate-300 bg-white py-4 px-6 flex justify-between text-[10px] text-slate-400 font-medium">
+        <span>© 2026 HimShakti Unit. Internal vendor network context.</span>
+        <div class="flex gap-4">
+          <span>[Security Protocol]</span>
+          <span>[API Gateway]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SCREEN 2: LOGIN / SIGNUP -->
+  <div class="page-break w-full max-w-6xl bg-white border border-slate-300 rounded-2xl shadow-md overflow-hidden flex flex-col" style="aspect-ratio: 16/9;">
+    <!-- Browser Mockup Header -->
+    <div class="bg-slate-100 border-b border-slate-300 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+      </div>
+      <div class="bg-white border border-slate-300 text-center text-xs text-slate-400 py-1 px-12 rounded-lg w-1/2 select-none">
+        http://himshakti-generator.internal/login
+      </div>
+      <div class="text-xs text-slate-500 font-medium">SCREEN 2: LOGIN/SIGNUP</div>
+    </div>
+
+    <!-- Main Workspace (Center Layout) -->
+    <div class="flex-grow flex items-center justify-center bg-slate-50 px-6 py-8">
+      <div class="w-full max-w-md bg-white border border-slate-300 rounded-xl shadow-sm p-8 space-y-6">
+        
+        <!-- Header -->
+        <div class="text-center space-y-2">
+          <div class="w-12 h-12 placeholder-box rounded-lg mx-auto"></div>
+          <div class="w-32 h-5 bg-slate-300 rounded mx-auto"></div>
+          <div class="w-56 h-3 bg-slate-200 rounded mx-auto"></div>
+        </div>
+
+        <!-- Form fields -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <div class="flex justify-between">
+              <div class="w-20 h-3 bg-slate-200 rounded"></div>
+              <div class="w-12 h-3 bg-slate-200 rounded"></div>
+            </div>
+            <div class="w-full h-10 border border-slate-300 rounded bg-slate-50 flex items-center px-3 text-xs text-slate-700 select-none">
+              ping.samarth@gmail.com
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between">
+              <div class="w-20 h-3 bg-slate-200 rounded"></div>
+              <div class="w-24 h-3 bg-slate-200 rounded"></div>
+            </div>
+            <div class="w-full h-10 border border-slate-300 rounded bg-slate-50 flex items-center justify-between px-3 text-xs text-slate-400 select-none">
+              <span>••••••••</span>
+              <span class="text-[10px] text-slate-500">[Show]</span>
+            </div>
+          </div>
+
+          <!-- Options -->
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="border-slate-300 rounded text-slate-800 focus:ring-0" disabled checked>
+              <span>[Remember session]</span>
+            </label>
+            <span>[Forgot password?]</span>
+          </div>
+
+          <!-- Action -->
+          <div class="space-y-2 pt-2">
+            <div class="w-full h-10 bg-emerald-700 text-white font-bold rounded flex items-center justify-center text-xs">[Sign In to Dashboard]</div>
+            <div class="w-full h-10 border border-slate-300 bg-white text-slate-700 font-bold rounded flex items-center justify-center text-xs gap-2 select-none">
+              <div class="w-4 h-4 placeholder-box rounded-full"></div> [Sign in with Admin SSO]
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="flex items-center justify-center gap-3 py-1">
+          <div class="flex-grow h-px bg-slate-200"></div>
+          <span class="text-[10px] text-slate-400 select-none">OR</span>
+          <div class="flex-grow h-px bg-slate-200"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-slate-500">
+          <span>[New local vendor? Request account setup]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SCREEN 3: DASHBOARD -->
+  <div class="page-break w-full max-w-6xl bg-white border border-slate-300 rounded-2xl shadow-md overflow-hidden flex flex-col" style="aspect-ratio: 16/9;">
+    <!-- Browser Mockup Header -->
+    <div class="bg-slate-100 border-b border-slate-300 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+      </div>
+      <div class="bg-white border border-slate-300 text-center text-xs text-slate-400 py-1 px-12 rounded-lg w-1/2 select-none">
+        http://himshakti-generator.internal/dashboard
+      </div>
+      <div class="text-xs text-slate-500 font-medium">SCREEN 3: INVENTORY DASHBOARD</div>
+    </div>
+
+    <!-- Main Workspace (Sidebar + Content Grid) -->
+    <div class="flex-grow flex bg-slate-50">
+      
+      <!-- Left Navigation Sidebar -->
+      <aside class="w-60 border-r border-slate-300 bg-white p-4 flex flex-col justify-between">
+        <div class="space-y-6">
+          <!-- Logo Context -->
+          <div class="flex items-center gap-2 px-2">
+            <div class="w-6 h-6 placeholder-box rounded"></div>
+            <div class="w-24 h-4 bg-slate-300 rounded"></div>
+          </div>
+          <!-- Links -->
+          <div class="space-y-1">
+            <div class="w-full h-8 bg-emerald-50 text-emerald-700 font-bold px-3 rounded-l flex items-center text-xs select-none border-l-4 border-emerald-700">📊 Dashboard</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">✍️ Generate Desc.</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📦 Products List</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📈 Sourcing Analytics</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">⚙️ System Settings</div>
+          </div>
+        </div>
+
+        <!-- Profile Badge -->
+        <div class="border-t border-slate-200 pt-4 flex items-center gap-2 px-2">
+          <div class="w-8 h-8 placeholder-box rounded-full"></div>
+          <div class="space-y-1">
+            <div class="w-20 h-3 bg-slate-300 rounded"></div>
+            <div class="w-16 h-2 bg-slate-200 rounded"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Body Content -->
+      <main class="flex-grow p-6 flex flex-col gap-6 overflow-y-auto">
+        <!-- Dashboard Header -->
+        <div class="flex justify-between items-center">
+          <div>
+            <div class="w-40 h-6 bg-slate-300 rounded"></div>
+            <div class="w-64 h-3 bg-slate-200 rounded mt-1"></div>
+          </div>
+          <div class="w-32 h-9 bg-emerald-700 text-white text-xs font-bold rounded flex items-center justify-center">[+ Add Crop Entry]</div>
+        </div>
+
+        <!-- Metrics Row -->
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-300 space-y-2">
+            <div class="w-24 h-3 bg-slate-200 rounded"></div>
+            <div class="w-12 h-6 bg-slate-300 rounded"></div>
+            <div class="w-36 h-2 bg-slate-100 rounded"></div>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-300 space-y-2">
+            <div class="w-20 h-3 bg-slate-200 rounded"></div>
+            <div class="w-10 h-6 bg-slate-300 rounded"></div>
+            <div class="w-36 h-2 bg-slate-100 rounded"></div>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-300 space-y-2">
+            <div class="w-28 h-3 bg-slate-200 rounded"></div>
+            <div class="w-12 h-6 bg-slate-300 rounded"></div>
+            <div class="w-36 h-2 bg-slate-100 rounded"></div>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-300 space-y-2">
+            <div class="w-16 h-3 bg-slate-200 rounded"></div>
+            <div class="w-8 h-6 bg-slate-300 rounded"></div>
+            <div class="w-36 h-2 bg-slate-100 rounded"></div>
+          </div>
+        </div>
+
+        <!-- Table Filters & Search -->
+        <div class="bg-white p-3 rounded-lg border border-slate-300 flex items-center justify-between gap-4">
+          <div class="flex-grow max-w-sm h-8 bg-slate-50 border border-slate-300 rounded flex items-center px-3 text-xs text-slate-400">[Search products by name, SKU or farm...]</div>
+          <div class="flex gap-2">
+            <div class="w-24 h-8 border border-slate-300 rounded flex items-center justify-center text-xs text-slate-500 font-medium bg-white">[Filter Status]</div>
+            <div class="w-24 h-8 border border-slate-300 rounded flex items-center justify-center text-xs text-slate-500 font-medium bg-white">[Sort By Date]</div>
+          </div>
+        </div>
+
+        <!-- Product Table Wireframe -->
+        <div class="bg-white rounded-xl border border-slate-300 overflow-hidden flex-grow flex flex-col justify-between">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-100 border-b border-slate-300 font-medium text-slate-500">
+                <th class="p-3 w-12 text-center">[Img]</th>
+                <th class="p-3">[Product Details]</th>
+                <th class="p-3">[Category]</th>
+                <th class="p-3">[Sourcing Farm]</th>
+                <th class="p-3 w-28 text-center">[Status Tag]</th>
+                <th class="p-3 w-24 text-right">[Actions]</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-600">
+              <!-- Item 1 -->
+              <tr>
+                <td class="p-3"><div class="w-6 h-6 placeholder-box rounded mx-auto"></div></td>
+                <td class="p-3 font-semibold text-slate-800">[Organic Himalayan Rajma]</td>
+                <td class="p-3">[Pulses]</td>
+                <td class="p-3">[Uttarkashi Valley Farms]</td>
+                <td class="p-3"><div class="w-20 h-5 bg-slate-200 border border-slate-300 text-slate-600 rounded-full flex items-center justify-center text-[9px] font-bold mx-auto">[Ready]</div></td>
+                <td class="p-3 text-right text-slate-400 font-bold select-none">[View] [AI] [•••]</td>
+              </tr>
+              <!-- Item 2 -->
+              <tr>
+                <td class="p-3"><div class="w-6 h-6 placeholder-box rounded mx-auto"></div></td>
+                <td class="p-3 font-semibold text-slate-800">[Himalayan Red Rice]</td>
+                <td class="p-3">[Cereals]</td>
+                <td class="p-3">[Shimla Regional Co-op]</td>
+                <td class="p-3"><div class="w-20 h-5 bg-slate-200 border border-slate-300 text-slate-600 rounded-full flex items-center justify-center text-[9px] font-bold mx-auto">[Missing Desc]</div></td>
+                <td class="p-3 text-right text-slate-400 font-bold select-none">[View] [AI] [•••]</td>
+              </tr>
+              <!-- Item 3 -->
+              <tr>
+                <td class="p-3"><div class="w-6 h-6 placeholder-box rounded mx-auto"></div></td>
+                <td class="p-3 font-semibold text-slate-800">[Chamoli Honey Grains]</td>
+                <td class="p-3">[Sweeteners]</td>
+                <td class="p-3">[Nanda Devi Apiaries]</td>
+                <td class="p-3"><div class="w-20 h-5 bg-slate-200 border border-slate-300 text-slate-600 rounded-full flex items-center justify-center text-[9px] font-bold mx-auto">[Draft]</div></td>
+                <td class="p-3 text-right text-slate-400 font-bold select-none">[View] [AI] [•••]</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table Pagination Footer -->
+          <div class="border-t border-slate-300 p-3 bg-slate-50 flex items-center justify-between text-xs text-slate-500 font-medium">
+            <span>[Showing 1-3 of 14 entries]</span>
+            <div class="flex items-center gap-1">
+              <span class="px-2 py-1 border border-slate-300 rounded bg-white font-bold select-none">&lt;</span>
+              <span class="px-3 py-1 bg-emerald-700 text-white rounded font-bold">1</span>
+              <span class="px-3 py-1 border border-slate-300 rounded bg-white font-bold">2</span>
+              <span class="px-2 py-1 border border-slate-300 rounded bg-white font-bold select-none">&gt;</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+
+  <!-- SCREEN 4: DETAIL VIEW -->
+  <div class="page-break w-full max-w-6xl bg-white border border-slate-300 rounded-2xl shadow-md overflow-hidden flex flex-col" style="aspect-ratio: 16/9;">
+    <!-- Browser Mockup Header -->
+    <div class="bg-slate-100 border-b border-slate-300 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+      </div>
+      <div class="bg-white border border-slate-300 text-center text-xs text-slate-400 py-1 px-12 rounded-lg w-1/2 select-none">
+        http://himshakti-generator.internal/dashboard/products/rajma-01
+      </div>
+      <div class="text-xs text-slate-500 font-medium">SCREEN 4: PRODUCT DETAIL VIEW</div>
+    </div>
+
+    <!-- Main Workspace (Sidebar + Grid Content) -->
+    <div class="flex-grow flex bg-slate-50">
+      
+      <!-- Left Navigation Sidebar -->
+      <aside class="w-60 border-r border-slate-300 bg-white p-4 flex flex-col justify-between">
+        <div class="space-y-6">
+          <div class="flex items-center gap-2 px-2">
+            <div class="w-6 h-6 placeholder-box rounded"></div>
+            <div class="w-24 h-4 bg-slate-300 rounded"></div>
+          </div>
+          <div class="space-y-1">
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📊 Dashboard</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">✍️ Generate Desc.</div>
+            <div class="w-full h-8 bg-emerald-50 text-emerald-700 font-bold px-3 rounded-l flex items-center text-xs select-none border-l-4 border-emerald-700">📦 Products List</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📈 Sourcing Analytics</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">⚙️ System Settings</div>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 pt-4 flex items-center gap-2 px-2">
+          <div class="w-8 h-8 placeholder-box rounded-full"></div>
+          <div class="space-y-1">
+            <div class="w-20 h-3 bg-slate-300 rounded"></div>
+            <div class="w-16 h-2 bg-slate-200 rounded"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Body Content -->
+      <main class="flex-grow p-6 flex flex-col gap-6 overflow-y-auto">
+        <!-- Breadcrumbs & Navigation Actions -->
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-2 text-xs text-slate-500">
+            <span>[Products]</span>
+            <span>&gt;</span>
+            <span>[Pulses]</span>
+            <span>&gt;</span>
+            <span class="font-semibold text-slate-700">[Himalayan Rajma]</span>
+          </div>
+          <div class="flex gap-2">
+            <div class="w-24 h-8 border border-slate-300 rounded bg-white text-xs font-bold text-slate-700 flex items-center justify-center select-none">[Edit Details]</div>
+            <div class="w-32 h-8 bg-emerald-700 text-white text-xs font-bold rounded flex items-center justify-center">[Generate AI Copy]</div>
+          </div>
+        </div>
+
+        <!-- Two Column Main Body -->
+        <div class="grid grid-cols-12 gap-6 flex-grow">
+          <!-- Column 1: Image & Sourcing Information (Left) -->
+          <div class="col-span-4 flex flex-col gap-4">
+            <div class="w-full h-48 placeholder-box rounded-xl"></div>
+            
+            <div class="bg-white p-4 rounded-xl border border-slate-300 space-y-3">
+              <div class="w-24 h-4 bg-slate-300 rounded"></div>
+              <div class="border-t border-slate-200 pt-2 space-y-2">
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-400">[Source Farm]:</span>
+                  <span class="font-medium text-slate-700">[Uttarkashi Co-op]</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-400">[Elevation]:</span>
+                  <span class="font-medium text-slate-700">[1,800 meters]</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-400">[Harvest Date]:</span>
+                  <span class="font-medium text-slate-700">[October 2025]</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-400">[Organic Grade]:</span>
+                  <span class="font-medium text-slate-700">[A+ Certified]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Details fields (Right) -->
+          <div class="col-span-8 space-y-4">
+            <!-- Basic Identifiers -->
+            <div class="bg-white p-6 rounded-xl border border-slate-300 space-y-4">
+              <div class="space-y-1">
+                <div class="w-48 h-6 bg-slate-300 rounded"></div>
+                <div class="w-32 h-3 bg-slate-200 rounded"></div>
+              </div>
+
+              <!-- Input Grid representation -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1.5">
+                  <div class="w-16 h-3 bg-slate-200 rounded"></div>
+                  <div class="w-full h-8 bg-slate-50 border border-slate-300 rounded px-2 flex items-center text-xs text-slate-600">[Himalayan Rajma (Red Kidney Beans)]</div>
+                </div>
+                <div class="space-y-1.5">
+                  <div class="w-16 h-3 bg-slate-200 rounded"></div>
+                  <div class="w-full h-8 bg-slate-50 border border-slate-300 rounded px-2 flex items-center text-xs text-slate-600">[Pulses / Raw Grains]</div>
+                </div>
+                <div class="space-y-1.5">
+                  <div class="w-16 h-3 bg-slate-200 rounded"></div>
+                  <div class="w-full h-8 bg-slate-50 border border-slate-300 rounded px-2 flex items-center text-xs text-slate-600">[SKU-HIM-RAJ-01]</div>
+                </div>
+                <div class="space-y-1.5">
+                  <div class="w-16 h-3 bg-slate-200 rounded"></div>
+                  <div class="w-full h-8 bg-slate-50 border border-slate-300 rounded px-2 flex items-center text-xs text-slate-600">[Net Wt: 500g]</div>
+                </div>
+              </div>
+
+              <!-- Product Description Block -->
+              <div class="space-y-1.5">
+                <div class="w-36 h-3 bg-slate-200 rounded"></div>
+                <div class="w-full h-20 bg-slate-50 border border-slate-300 rounded p-2 text-xs text-slate-500 space-y-1.5">
+                  <div class="w-full h-3 bg-slate-200 rounded"></div>
+                  <div class="w-5/6 h-3 bg-slate-200 rounded"></div>
+                  <div class="w-4/5 h-3 bg-slate-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Sourcing & Symmetrical Batches status -->
+            <div class="bg-white p-4 rounded-xl border border-slate-300 space-y-2">
+              <div class="w-24 h-4 bg-slate-300 rounded"></div>
+              <div class="w-full h-12 placeholder-box rounded"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+
+  <!-- SCREEN 5: AI FEATURE SCREEN (GENERATOR) -->
+  <div class="page-break w-full max-w-6xl bg-white border border-slate-300 rounded-2xl shadow-md overflow-hidden flex flex-col" style="aspect-ratio: 16/9;">
+    <!-- Browser Mockup Header -->
+    <div class="bg-slate-100 border-b border-slate-300 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+      </div>
+      <div class="bg-white border border-slate-300 text-center text-xs text-slate-400 py-1 px-12 rounded-lg w-1/2 select-none">
+        http://himshakti-generator.internal/dashboard/ai-generator
+      </div>
+      <div class="text-xs text-slate-500 font-medium">SCREEN 5: AI DESCRIPTION GENERATOR</div>
+    </div>
+
+    <!-- Main Workspace (Sidebar + Interactive AI Playground) -->
+    <div class="flex-grow flex bg-slate-50">
+      
+      <!-- Left Navigation Sidebar -->
+      <aside class="w-60 border-r border-slate-300 bg-white p-4 flex flex-col justify-between">
+        <div class="space-y-6">
+          <div class="flex items-center gap-2 px-2">
+            <div class="w-6 h-6 placeholder-box rounded"></div>
+            <div class="w-24 h-4 bg-slate-300 rounded"></div>
+          </div>
+          <div class="space-y-1">
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📊 Dashboard</div>
+            <div class="w-full h-8 bg-emerald-50 text-emerald-700 font-bold px-3 rounded-l flex items-center text-xs select-none border-l-4 border-emerald-700">✍️ Generate Desc.</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📦 Products List</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📈 Sourcing Analytics</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">⚙️ System Settings</div>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 pt-4 flex items-center gap-2 px-2">
+          <div class="w-8 h-8 placeholder-box rounded-full"></div>
+          <div class="space-y-1">
+            <div class="w-20 h-3 bg-slate-300 rounded"></div>
+            <div class="w-16 h-2 bg-slate-200 rounded"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Body Content -->
+      <main class="flex-grow p-6 flex flex-col gap-6 overflow-y-auto">
+        <!-- AI Generator Title Area -->
+        <div class="flex justify-between items-center">
+          <div>
+            <div class="w-48 h-6 bg-slate-300 rounded"></div>
+            <div class="w-80 h-3 bg-slate-200 rounded mt-1"></div>
+          </div>
+          <!-- Model indicator -->
+          <div class="flex items-center gap-2 border border-slate-300 bg-white px-3 py-1.5 rounded-lg text-[10px] text-slate-500">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+            <span>[Active Model: Gemini 2.5 Flash]</span>
+          </div>
+        </div>
+
+        <!-- Split Grid (Controls vs. Live Preview Output) -->
+        <div class="grid grid-cols-12 gap-6 flex-grow">
+          
+          <!-- Left Controls Column (Form inputs) -->
+          <div class="col-span-5 bg-white p-5 rounded-xl border border-slate-300 flex flex-col justify-between">
+            <div class="space-y-4">
+              <!-- Select Product dropdown representation -->
+              <div class="space-y-1.5">
+                <div class="w-28 h-3 bg-slate-200 rounded"></div>
+                <div class="w-full h-9 border border-slate-300 rounded bg-slate-50 flex items-center justify-between px-3 text-xs text-slate-600 select-none">
+                  <span>[Organic Himalayan Rajma - SKU-01]</span>
+                  <span>▼</span>
+                </div>
+              </div>
+
+              <!-- Brand Tone options -->
+              <div class="space-y-1.5">
+                <div class="w-28 h-3 bg-slate-200 rounded"></div>
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="h-8 border border-emerald-700 text-emerald-700 rounded flex items-center justify-center text-[10px] font-bold select-none bg-emerald-50">[Storyteller]</div>
+                  <div class="h-8 border border-slate-300 text-slate-400 rounded flex items-center justify-center text-[10px] font-medium select-none bg-white">[Commercial]</div>
+                  <div class="h-8 border border-slate-300 text-slate-400 rounded flex items-center justify-center text-[10px] font-medium select-none bg-white">[Pure & Simple]</div>
+                </div>
+              </div>
+
+              <!-- Sourcing Key points checkboxes -->
+              <div class="space-y-2">
+                <div class="w-32 h-3 bg-slate-200 rounded"></div>
+                <div class="space-y-1.5 text-xs text-slate-600">
+                  <label class="flex items-center gap-2">
+                    <input type="checkbox" class="border-slate-300 rounded text-slate-800" checked disabled>
+                    <span>[Grown at 1800m altitude]</span>
+                  </label>
+                  <label class="flex items-center gap-2">
+                    <input type="checkbox" class="border-slate-300 rounded text-slate-800" checked disabled>
+                    <span>[High protein & mineral content]</span>
+                  </label>
+                  <label class="flex items-center gap-2">
+                    <input type="checkbox" class="border-slate-300 rounded text-slate-800" checked disabled>
+                    <span>[Chemical-free traditional farming]</span>
+                  </label>
+                  <label class="flex items-center gap-2">
+                    <input type="checkbox" class="border-slate-300 rounded text-slate-800" disabled>
+                    <span>[Single origin farm trace link]</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Custom instruction Prompt -->
+              <div class="space-y-1.5">
+                <div class="w-32 h-3 bg-slate-200 rounded"></div>
+                <div class="w-full h-16 border border-slate-300 rounded bg-slate-50 p-2 text-xs text-slate-400 select-none">
+                  [e.g., Focus on slow-cooking recipe recommendations...]
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit action -->
+            <div class="pt-4 border-t border-slate-100">
+              <button class="w-full h-10 bg-emerald-700 text-white rounded text-xs font-bold shadow hover:bg-emerald-800 transition flex items-center justify-center gap-2">
+                ✨ [Generate Description Draft]
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Live Output & Action Arena -->
+          <div class="col-span-7 bg-white rounded-xl border border-slate-300 flex flex-col justify-between">
+            <!-- Header bar of Output -->
+            <div class="bg-slate-50 border-b border-slate-300 px-4 py-3 flex justify-between items-center">
+              <div class="w-32 h-4 bg-slate-300 rounded"></div>
+              <div class="flex gap-2">
+                <div class="w-12 h-6 border border-slate-300 rounded bg-white text-[9px] font-bold text-slate-500 flex items-center justify-center select-none">[Copy]</div>
+                <div class="w-14 h-6 border border-slate-300 rounded bg-white text-[9px] font-bold text-slate-500 flex items-center justify-center select-none">[Markdown]</div>
+              </div>
+            </div>
+
+            <!-- Output Body Editor placeholder -->
+            <div class="flex-grow p-5 space-y-4">
+              <!-- Content placeholder skeleton -->
+              <div class="space-y-2.5">
+                <div class="w-24 h-4 bg-slate-300 rounded font-serif italic text-xs px-2 text-slate-500">[Draft Title Headline]</div>
+                <div class="w-full h-px bg-slate-100"></div>
+                <div class="w-full h-3 bg-slate-200 rounded"></div>
+                <div class="w-full h-3 bg-slate-200 rounded"></div>
+                <div class="w-4/5 h-3 bg-slate-200 rounded"></div>
+                <div class="w-5/6 h-3 bg-slate-200 rounded"></div>
+              </div>
+
+              <!-- Detailed Sourcing Box in text -->
+              <div class="border border-dashed border-slate-300 bg-slate-50/50 p-3 rounded-lg space-y-1.5">
+                <div class="w-20 h-2 bg-slate-300 rounded"></div>
+                <div class="w-full h-2.5 bg-slate-200 rounded"></div>
+                <div class="w-3/4 h-2.5 bg-slate-200 rounded"></div>
+              </div>
+            </div>
+
+            <!-- Action footer of Output -->
+            <div class="bg-slate-50 border-t border-slate-300 p-4 flex justify-between items-center gap-4">
+              <div class="w-32 h-3 bg-slate-300 rounded"></div>
+              <div class="flex gap-2">
+                <button class="w-24 h-9 border border-slate-300 bg-white text-xs font-bold text-slate-600 rounded select-none">[Regenerate]</button>
+                <button class="w-36 h-9 bg-emerald-700 text-white text-xs font-bold rounded shadow">[Save Description to SKU]</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+
+  <!-- SCREEN 6: SETTINGS -->
+  <div class="page-break w-full max-w-6xl bg-white border border-slate-300 rounded-2xl shadow-md overflow-hidden flex flex-col" style="aspect-ratio: 16/9;">
+    <!-- Browser Mockup Header -->
+    <div class="bg-slate-100 border-b border-slate-300 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+      </div>
+      <div class="bg-white border border-slate-300 text-center text-xs text-slate-400 py-1 px-12 rounded-lg w-1/2 select-none">
+        http://himshakti-generator.internal/dashboard/settings
+      </div>
+      <div class="text-xs text-slate-500 font-medium">SCREEN 6: SYSTEM SETTINGS</div>
+    </div>
+
+    <!-- Main Workspace (Sidebar + Settings grid) -->
+    <div class="flex-grow flex bg-slate-50">
+      
+      <!-- Left Navigation Sidebar -->
+      <aside class="w-60 border-r border-slate-300 bg-white p-4 flex flex-col justify-between">
+        <div class="space-y-6">
+          <div class="flex items-center gap-2 px-2">
+            <div class="w-6 h-6 placeholder-box rounded"></div>
+            <div class="w-24 h-4 bg-slate-300 rounded"></div>
+          </div>
+          <div class="space-y-1">
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📊 Dashboard</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">✍️ Generate Desc.</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📦 Products List</div>
+            <div class="w-full h-8 text-slate-500 px-3 rounded flex items-center text-xs select-none hover:bg-slate-50">📈 Sourcing Analytics</div>
+            <div class="w-full h-8 bg-emerald-50 text-emerald-700 font-bold px-3 rounded-l flex items-center text-xs select-none border-l-4 border-emerald-700">⚙️ System Settings</div>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 pt-4 flex items-center gap-2 px-2">
+          <div class="w-8 h-8 placeholder-box rounded-full"></div>
+          <div class="space-y-1">
+            <div class="w-20 h-3 bg-slate-300 rounded"></div>
+            <div class="w-16 h-2 bg-slate-200 rounded"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Body Content -->
+      <main class="flex-grow p-6 flex flex-col gap-6 overflow-y-auto">
+        <!-- Settings Title Area -->
+        <div>
+          <div class="w-48 h-6 bg-slate-300 rounded"></div>
+          <div class="w-80 h-3 bg-slate-200 rounded mt-1"></div>
+        </div>
+
+        <!-- Horizontal settings navigation tabs -->
+        <div class="border-b border-slate-200 flex gap-6 text-xs text-slate-500 pb-px">
+          <span class="border-b-2 border-emerald-700 text-emerald-700 font-bold pb-2 cursor-pointer">[General Params]</span>
+          <span class="pb-2 cursor-pointer hover:text-slate-700">[AI Model API Config]</span>
+          <span class="pb-2 cursor-pointer hover:text-slate-700">[PostgreSQL Connection]</span>
+          <span class="pb-2 cursor-pointer hover:text-slate-700">[User Roles & Access]</span>
+        </div>
+
+        <!-- Settings Settings Panel -->
+        <div class="bg-white rounded-xl border border-slate-300 p-6 space-y-6 flex-grow max-w-3xl">
+          
+          <!-- Block 1: AI Model Configuration -->
+          <div class="space-y-4">
+            <div class="w-48 h-4 bg-slate-300 rounded"></div>
+            <div class="w-full h-px bg-slate-200"></div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <div class="w-24 h-3 bg-slate-200 rounded"></div>
+                <div class="w-full h-9 border border-slate-300 rounded bg-slate-50 flex items-center justify-between px-3 text-xs text-slate-600 select-none">
+                  <span>[Gemini 2.5 Flash]</span>
+                  <span>▼</span>
+                </div>
+              </div>
+              <div class="space-y-1.5">
+                <div class="w-24 h-3 bg-slate-200 rounded"></div>
+                <div class="w-full h-9 border border-slate-300 rounded bg-slate-50 flex items-center justify-between px-3 text-xs text-slate-600 select-none">
+                  <span>[Gemini 2.5 Pro (Fallback)]</span>
+                  <span>▼</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="w-32 h-3 bg-slate-200 rounded"></div>
+              <div class="w-full h-9 border border-slate-300 rounded bg-slate-50 flex items-center px-3 text-xs text-slate-400 select-none">
+                [••••••••••••••••••••••••••••••••]
+              </div>
+            </div>
+          </div>
+
+          <!-- Block 2: regional Locales / Target languages -->
+          <div class="space-y-4 pt-4 border-t border-slate-100">
+            <div class="w-48 h-4 bg-slate-300 rounded"></div>
+            
+            <div class="grid grid-cols-3 gap-3">
+              <label class="flex items-center gap-2 border border-slate-300 bg-slate-50 p-2.5 rounded-lg text-xs cursor-pointer select-none">
+                <input type="checkbox" class="border-slate-300 rounded text-slate-800" checked disabled>
+                <span>[English (US/UK)]</span>
+              </label>
+              <label class="flex items-center gap-2 border border-slate-300 bg-slate-50 p-2.5 rounded-lg text-xs cursor-pointer select-none">
+                <input type="checkbox" class="border-slate-300 rounded text-slate-800" checked disabled>
+                <span>[Hindi (Regional)]</span>
+              </label>
+              <label class="flex items-center gap-2 border border-slate-300 bg-slate-50 p-2.5 rounded-lg text-xs cursor-pointer select-none">
+                <input type="checkbox" class="border-slate-300 rounded text-slate-800" checked disabled>
+                <span>[Nepali (Regional)]</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Action Save Bar -->
+          <div class="flex justify-end gap-3 pt-6 border-t border-slate-100">
+            <button class="w-24 h-9 border border-slate-300 bg-white text-xs font-bold text-slate-600 rounded select-none">[Reset Defaults]</button>
+            <button class="w-32 h-9 bg-emerald-700 text-white text-xs font-bold rounded shadow">[Save Config Parameters]</button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+</body>
+</html>
